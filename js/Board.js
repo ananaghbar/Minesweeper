@@ -84,6 +84,11 @@ var Board = function(element){
       while(minesRows.length < this.mineCount){
           var randomNumber = Math.ceil(Math.random()*maxRow-1);
           //var randomNumber = Math.floor(Math.random() * (maxRow - 1)) + 1;
+          if(infiniteLoop > 50)
+          {
+            alert("please reduce the number of mines to avoid the infinite loop!");
+            break;
+          }
           if(minesRows.indexOf(randomNumber) > -1){
             infiniteLoop++;
             continue;
