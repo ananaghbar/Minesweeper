@@ -24,6 +24,8 @@ var Board = function(element){
 		this.draw();
 		//pant the mines on the cells
 		this.plantMines();
+		//calculate the number of sibllings
+		this.calculate();
 	}//init
 
 
@@ -184,6 +186,28 @@ var Board = function(element){
   this.getFlattenCells = function() {
   return this.cells.reduce(function(a, b) {
      return a.concat(b);
-  });
-}
+  		});
+	}
+  /*****/
+   this.calculate = function() {
+      var x, y, cell, mineCount;
+
+      for (x = 0; x < this.rows; x++) {
+         for (y = 0; y < this.cols; y++) {
+            cell = this.cells[x][y];
+            var cells = this.getCellSibllings(cell);
+            mineCount = 0;
+
+            if (! cell.isMine) {
+               Array.prototype.forEach.call(cells, function(cellVal) {
+                  if (cellVal.isMine) {
+                     mineCount++
+                  }
+               }.bind(this));
+
+               (mineCount == 0) ? cell.setEmpty() : cell.setMineCount(mineCount);
+            }//not a mine
+         }//cols
+      }//rows
+   }//calculate  
 }//Board

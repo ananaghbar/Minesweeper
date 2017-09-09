@@ -1,8 +1,8 @@
 // defualt values
 
-var ROWS=3;
-var COLS=3;
-var MINES=3;
+var ROWS=9;
+var COLS=9;
+var MINES=8;
 
 
 //max values
@@ -208,4 +208,32 @@ MineSweeper.prototype.isWin = function() {
    return this.board.getNotOpenedCells().length <= this.mineCount;
 }
 
-}//MineSweeper
+
+//to set the flag
+MineSweeper.prototype.rightClickHandler = function(event) {
+   event.preventDefault();
+
+   if (this.isMineSweeperOver || ! event.target.classList.contains('cell')) {
+      return;
+   }
+
+   var cell = this.findCellByEvent(event);
+
+   if (cell.isFlagged) {
+      this.increaseLeftMineCount();
+      cell.setUnflagged();
+   } else {
+      this.decrementLeftMineCount();
+      cell.setFlagged();
+   }
+}
+
+MineSweeper.prototype.decrementLeftMineCount = function() {
+   this.leftMineCount--;
+   this.components.mine.textContent = this.leftMineCount;
+}
+
+MineSweeper.prototype.increaseLeftMineCount = function() {
+   this.leftMineCount++;
+   this.components.mine.textContent = this.leftMineCount;
+}
