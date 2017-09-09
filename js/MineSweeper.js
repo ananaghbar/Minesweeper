@@ -87,6 +87,7 @@ MineSweeper.prototype.init = function() {
    this.initialize = true;
 }
 
+
 MineSweeper.prototype.eventsHandlers = function() {
 
    this.els.restartButton.addEventListener('click', this.restartClickHandler.bind(this));
@@ -104,3 +105,16 @@ MineSweeper.prototype.restartClickHandler = function() {
    this.els.mines.value=MINES;
    new MineSweeper(ROWS,COLS,MINES);
 }
+
+//timer functions
+MineSweeper.prototype.startTimer = function() {
+   this.timer = setInterval(function() {
+      ++this.time;
+      this.els.time.textContent = this.time;
+   }.bind(this), 1000);
+}
+
+MineSweeper.prototype.stopTimer = function() {
+   clearInterval(this.timer);
+}
+/********/
