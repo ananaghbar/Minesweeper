@@ -118,3 +118,35 @@ MineSweeper.prototype.stopTimer = function() {
    clearInterval(this.timer);
 }
 /********/
+MineSweeper.prototype.startClickHandler = function(){
+
+   var rows=this.components.row.value;
+   var cols=this.components.col.value;
+   var mines=this.components.mines.value;
+   if(mines >= Math.min(rows,cols)){
+      alert("The number of the mines should be less than: "+Math.min(rows,cols));
+      return;
+   }
+   if(rows ==0){
+      alert("The number of the rows should be greater than ZERO");
+      return;
+   }
+   if(cols ==0){
+      alert("The number of the cols should be greater than ZERO");
+      return;
+   }
+   if(rows ==0){
+      alert("The number of the mines should be greater than ZERO");
+      return;
+   }
+   if(rows > MAX_ROWS){
+      alert("Max. number of rows = "+MAX_ROWS);
+      return;
+   }
+   if(rows > MAX_COLS){
+      alert("Max. number of rows = "+MAX_ROWS);
+      return;
+   }   
+   this.generateGame(rows,cols,mines);
+   this.init();
+}
