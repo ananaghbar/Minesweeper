@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MineSweeper</title>
+	<link rel="stylesheet" href="css/minesweeper.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<h1>MineSweeper Assignment in java script</h1>
+	<div class="wrapper">
+		<div class="game-numbers">
+            <label>Rows #: </label><input type="number" class="row" name="row" value="3"></br>
+            <label>Cols #: </label><input type="number" class="col" name="col" value="3"></br>
+            <label>Mines #: </label><input type="number" class="mines" name="mines" value="10"></br>
+            <button class="start">Start!</button>			
+		</div>
+		<div class="screen">
+			<div class="header">
+				<div class="mines">
+					<div class="mines-count">0</div>
+					<div>Mines</div>
+				</div><!-- mines -->
+				<div class="timer">
+					<div class="time">0</div>
+					<div>Timer</div>
+				</div><!-- timer -->
+			</div><!-- header -->
+			<div class="board"></div>
+		</div><!-- screen -->
+		<div class="footer">
+			<button class="restart-button">Restart</button>
+		</div><!-- footer -->
+	</div><!-- wrapper -->
+</body>
+</html>

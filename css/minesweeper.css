@@ -1,0 +1,81 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 3rem;
+  color: #efbd62; }
+
+.row, .col, .mines {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem; }
+
+.clearFix {
+  clear: both; }
+
+.wrapper {
+  background: #eee;
+  min-width: 250px;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 0.2rem;
+  margin-bottom: 2rem; }
+  .wrapper .screen {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 0.2rem; }
+  .wrapper .header {
+    display: flex;
+    margin-bottom: 1rem;
+    color: #bbb; }
+    .wrapper .header > div {
+      flex-grow: 1; }
+  .wrapper .board {
+    margin-bottom: 1rem;
+    border: solid; }
+
+.footer .restart-button, .start {
+  border: 0;
+  background: #efbd62;
+  color: #846c3e;
+  border-radius: 0.2em;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: 0;
+  margin: 5px; }
+
+.cell {
+  background: #9c3101;
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 0.2em;
+  margin: 0.2rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer; }
+  .cell.is-revealed, .cell:hover {
+    background: #642101; }
+  .cell.is-clicked {
+    background-color: #d44646; }
+  .cell.is-empty {
+    background: rgba(239, 189, 98, 0.82); }
+
+/*# sourceMappingURL=minesweeper.css.map */
