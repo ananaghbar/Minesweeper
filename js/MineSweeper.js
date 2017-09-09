@@ -94,3 +94,13 @@ MineSweeper.prototype.eventsHandlers = function() {
    this.board.element.addEventListener('click', this.leftClickHandler.bind(this));
    this.board.element.addEventListener('contextmenu', this.rightClickHandler.bind(this));
 }
+
+/*events handler functions*/
+
+MineSweeper.prototype.restartClickHandler = function() {
+
+   this.els.row.value=ROWS;
+   this.els.col.value=COLS;
+   this.els.mines.value=MINES;
+   new MineSweeper(ROWS,COLS,MINES);
+}
