@@ -90,8 +90,8 @@ MineSweeper.prototype.init = function() {
 
 MineSweeper.prototype.eventsHandlers = function() {
 
-   this.els.restartButton.addEventListener('click', this.restartClickHandler.bind(this));
-   this.els.startButton.addEventListener('click', this.startClickHandler.bind(this));
+   this.components.restartButton.addEventListener('click', this.restartClickHandler.bind(this));
+   this.components.startButton.addEventListener('click', this.startClickHandler.bind(this));
    this.board.element.addEventListener('click', this.leftClickHandler.bind(this));
    this.board.element.addEventListener('contextmenu', this.rightClickHandler.bind(this));
 }
@@ -100,9 +100,9 @@ MineSweeper.prototype.eventsHandlers = function() {
 
 MineSweeper.prototype.restartClickHandler = function() {
 
-   this.els.row.value=ROWS;
-   this.els.col.value=COLS;
-   this.els.mines.value=MINES;
+   this.components.row.value=ROWS;
+   this.components.col.value=COLS;
+   this.components.mines.value=MINES;
    new MineSweeper(ROWS,COLS,MINES);
 }
 
@@ -110,7 +110,7 @@ MineSweeper.prototype.restartClickHandler = function() {
 MineSweeper.prototype.startTimer = function() {
    this.timer = setInterval(function() {
       ++this.time;
-      this.els.time.textContent = this.time;
+      this.components.time.textContent = this.time;
    }.bind(this), 1000);
 }
 
