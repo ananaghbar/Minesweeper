@@ -150,3 +150,62 @@ MineSweeper.prototype.startClickHandler = function(){
    this.generateGame(rows,cols,mines);
    this.init();
 }
+
+
+//open the cell function 
+MineSweeper.prototype.leftClickHandler = function(event) {
+   if (this.isMineSweeperOver || ! event.target.classList.contains('cell')) {
+      return;
+   }
+
+   var cell = this.findCellByEvent(event);
+
+   if (this.time == 0) {
+      this.startTimer();
+   }
+
+   if (cell.isFlagged) {
+      return;
+   }
+
+   if (cell.isMine) {
+      cell.element.classList.add('is-clicked');
+      return this.MineSweeperIsover();
+   }
+
+   cell.open();
+
+   if (cell.isEmpty) {
+      this.board.openCellSibllings(cell);
+   }
+
+   if (this.isWin()) {
+      return this.MineSweeperIsover(true);
+   }
+}
+
+//return the clicked cell
+MineSweeper.prototype.findCellByEvent = function(event) {
+   var x = event.target.getAttribute('x');
+   var y = event.target.getAttribute('y');
+   return this.board.cells[x][y];
+}
+
+//to check if the game is over!
+MineSweeper.prototype.MineSweeperIsover = function(isWin) {
+
+   var win = isWin || false;
+
+   this.stopTimer();
+   this.isMineSweeperOver = true;
+   this.board.open();
+	   if (win){
+	      alert('You win!');
+	   	}
+}
+
+MineSweeper.prototype.isWin = function() {
+   return this.board.getNotOpenedCells().length <= this.mineCount;
+}
+
+}//MineSweeper

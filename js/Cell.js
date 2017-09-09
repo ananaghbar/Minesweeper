@@ -51,4 +51,12 @@ var Cell = function(element,x,y){
       //set the number of the sibllings
       this.element.textContent = this.mineCount;		
 	}
+	
+   this.setEmpty = function() {
+      this.isEmpty = true;
+   }
+
+   this.setMineCount = function(number) {
+      this.mineCount = number;
+   }	
 }

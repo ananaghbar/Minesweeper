@@ -97,4 +97,93 @@ var Board = function(element){
          }
       return minesRows;
    }
+
+   this.open = function() {
+   	//open the cells for the current game
+      for (var y = 0; y < this.dimension; y++) {
+         Array.prototype.forEach.call(this.cells[y], function(cell) {
+            cell.open();
+         });
+      }
+   }
+
+
+   this.openCellSibllings = function(cell) {
+      var x,
+      sibillingCell,
+
+      //get the sibllings of the cell
+      sibillings = this.getCellSibllings(cell);
+
+      for (x = 0; x < sibillings.length; x++) {
+         sibillingCell = sibillings[x];
+
+         if (sibillingCell.isOpened || sibillingCell.isFlagged || sibillingCell.isMine) {
+            continue;
+         }
+
+         sibillingCell.open();
+
+         //if the current cell isn't a mine => check the siblling cell..etc
+         if (sibillingCell.isEmpty) {
+            this.openCellSibllings(sibillingCell);
+         }
+      }
+   }//openCellSibllings
+
+   this.getCellSibllings = function(cell) {
+      var cells = [];
+      // up
+      if (cell.y != 0) {
+         cells.push(this.cells[cell.x][cell.y - 1]);
+      }
+
+      // down
+      if (cell.y != this.cols - 1) {
+         cells.push(this.cells[cell.x][cell.y + 1]);
+      }
+
+      // left
+      if (cell.x != 0) {
+         cells.push(this.cells[cell.x - 1][cell.y]);
+      }
+
+      // right
+      if (cell.x != this.rows - 1) {
+         cells.push(this.cells[cell.x + 1][cell.y]);
+      }
+
+      // upper left
+      if (cell.y != 0 && cell.x != 0) {
+         cells.push(this.cells[cell.x - 1][cell.y - 1]);
+      }
+
+      // upper right
+      if (cell.y != 0 && cell.x != this.rows - 1) {
+         cells.push(this.cells[cell.x + 1][cell.y - 1]);
+      }
+
+      // lower left
+      if (cell.y != this.cols - 1 && cell.x != 0) {
+         cells.push(this.cells[cell.x - 1][cell.y + 1]);
+      }
+
+      // lower right
+      if (cell.y != this.cols - 1 && cell.x != this.rows - 1) {
+         cells.push(this.cells[cell.x + 1][cell.y + 1]);
+      }
+
+      return cells;
+   }
+   /********/
+  this.getNotOpenedCells = function(){
+   	  return this.getFlattenCells().filter(function(cell) {
+         return ! cell.isOpened;
+      });
+   }
+  this.getFlattenCells = function() {
+  return this.cells.reduce(function(a, b) {
+     return a.concat(b);
+  });
+}
 }//Board
