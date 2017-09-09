@@ -7,80 +7,86 @@ $silverColor: #eee
 
 
 html, body
-	width: 100%
-	height: 100%
-	text-align: center
-	font-family: $fontFamily
-	font-weight: $fontWeight
-	margin: 0
-	padding: 0
+  width: 100%
+  height: 100%
+  text-align: center
+  font-family: $fontFamily
+  font-weight: $fontWeight
+  margin: 0
+  padding: 0
 
 h1
-	font-family: $fontFamily
-	font-weight: $fontWeight
-	font-size: 3rem
-	color: $fontColor
+  font-weight: $fontWeight
+  font-family: $fontFamily
+  font-size: 3rem
+  color: $fontColor
 
 .row, .col, .mines
-	padding: 0
-	margin: 0
-	margin-bottom: 1rem
+  padding: 0
+  margin: 0
+  margin-bottom: 1rem
+  display: inline-block
+  background-color: $whiteColor
+  overflow: hidden
+  flex: 1
 
-.clearFix
-	clear: both
+.clearfix
+  clear: both
 
 .wrapper
-	background: $silverColor
-	min-width: 250px
-	display: inline-block
-	margin: 0 auto
-	padding: 2rem
-	border-radius: .2rem
-	margin-bottom: 2rem
-	.screen
-		background: $whiteColor
-		padding: 1rem
-		border-radius: .2rem
-	.header
-		display: flex
-		margin-bottom: 1rem
-		color: #bbb
-		> div
-			flex-grow: 1
-	.board
-		margin-bottom: 1rem
-		border: solid 
+  background: $silverColor
+  min-width: 250px
+  display: inline-block
+  margin: 0 auto
+  padding: 2rem
+  border-radius: .2rem
+  margin-bottom: 2rem
+
+.screen
+  background: $whiteColor
+  padding: 1rem
+  border-radius: .2rem
+  .header
+    display: flex
+    margin-bottom: 1rem
+    color: #bbb
+    > div
+      flex-grow: 1
+  .board
+    margin-bottom: 1rem
+    border: solid
+
 .footer .restart-button, .start
-	border: 0
-	background: $fontColor
-	color: #846c3e
-	border-radius: .2em
-	padding: .5rem 2rem
-	font-size: .9rem
-	cursor: pointer
-	outline: 0
-	margin: 5px
+  border: 0
+  background: $fontFamily
+  color: #846c3e
+  border-radius: .2em
+  padding: .5rem 2rem
+  font-size: .9rem
+  cursor: pointer
+  outline: 0
+  margin: 5px
 
 .cell
-	background: #9c3101
-	background-size: contain !important
-	background-position: center center !important
-	background-repeat: no-repeat !important
-	width: 25px
-	height: 25px
-	line-height: 25px
-	float: left
-	text-align: center
-	box-sizing: border-box
-	display: inline-block
-	border-radius: .2em
-	margin: .2rem
-	color: $whiteColor
-	font-weight: bold
-	cursor: pointer
-	&.is-opened, &:hover
-		background: #642101
-	&.is-clicked
-		background-color: #d44646
-	&.is-empty
-		background: rgba(239, 189, 98, 0.82)
+  background: #9c3101
+  background-size: contain !important
+  background-position: center center !important
+  background-repeat: no-repeat !important
+  width: 25px
+  height: 25px
+  line-height: 25px
+  float: left
+  text-align: center
+  box-sizing: border-box
+  display: inline-block
+  border-radius: .2em
+  margin: .2rem
+  color: $whiteColor
+  font-weight: bold
+  cursor: pointer
+  &.is-revealed, &:hover
+    background: #642101
+    &.is-clicked
+      background-color: #d44646
+  &.is-empty
+    background: rgba(239, 189, 98, 0.82)
